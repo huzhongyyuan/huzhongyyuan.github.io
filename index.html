@@ -3,59 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>hzy | 胡衷瑗</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 添加一些基本样式 */
+        :root {
+            --text: #1f2328;
+            --muted: #57606a;
+            --link: #0969da;
+            --link-hover: #0550ae;
+            --border: #d8dee4;
+            --bg-soft: #f6f8fa;
+            --accent: #0969da;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.65;
             margin: 0;
-            padding: 0;
+            background: #fff;
+            font-size: 16px;
         }
-        header, nav, main, footer {
-            padding: 20px;
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
         }
-        main {
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Header */
+        .header {
             display: flex;
+            gap: 36px;
+            align-items: flex-start;
+            margin-bottom: 40px;
         }
-        section {
+        .header-text {
             flex: 1;
+            min-width: 0;
         }
-        aside {
-            width: 200px; /* 可以根据照片大小调整宽度 */
-            padding: 20px;
-            flex-shrink: 0; /* 防止侧边栏在屏幕较小时缩小 */
+        .header h1 {
+            font-size: 28px;
+            margin: 0 0 4px;
         }
-        img.profile {
-            width: 100%; /* 使照片宽度适应容器 */
-            height: auto; /* 保持照片的纵横比 */
-            border-radius: 50%; /* 圆形照片效果 */
+        .header .subtitle {
+            color: var(--muted);
+            margin: 0 0 16px;
+            font-size: 15px;
+        }
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px 18px;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+        }
+        .links a:hover {
+            color: var(--link);
+            text-decoration: none;
+        }
+        .links i { width: 16px; text-align: center; }
+
+        /* Sections */
+        section { margin-top: 36px; }
+        section h2 {
+            font-size: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+            margin: 0 0 16px;
+        }
+        section p { margin: 0 0 12px; }
+
+        /* Bio */
+        .bio strong { color: var(--text); }
+
+        /* News */
+        .news ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .news li {
+            display: flex;
+            gap: 14px;
+            padding: 6px 0;
+            font-size: 14.5px;
+        }
+        .news .date {
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+            flex-shrink: 0;
+            width: 80px;
+        }
+
+        /* Publications */
+        .pub {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed var(--border);
+        }
+        .pub:last-child { border-bottom: none; }
+        .pub-thumb {
+            width: 180px;
+            height: 110px;
+            flex-shrink: 0;
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+        }
+        .pub-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .pub-body { flex: 1; min-width: 0; }
+        .pub-title {
+            font-weight: 600;
+            font-size: 15.5px;
+            margin: 0 0 4px;
+            color: var(--text);
+        }
+        .pub-authors {
+            font-size: 14px;
+            color: var(--text);
+            margin: 0 0 4px;
+        }
+        .pub-authors .me {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        .pub-venue {
+            font-size: 14px;
+            color: var(--muted);
+            font-style: italic;
+            margin: 0 0 6px;
+        }
+        .pub-venue .badge {
+            display: inline-block;
+            font-style: normal;
+            background: var(--bg-soft);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 1px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            margin-right: 6px;
+        }
+        .pub-links {
+            font-size: 13px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .pub-links a {
+            border: 1px solid var(--border);
+            padding: 2px 10px;
+            border-radius: 4px;
+            color: var(--muted);
+        }
+        .pub-links a:hover {
+            border-color: var(--link);
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        /* Experience */
+        .exp-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 12px;
+            font-size: 14.5px;
+        }
+        .exp-item .date {
+            color: var(--muted);
+            flex-shrink: 0;
+            width: 150px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container { padding: 28px 18px 60px; }
+            .header {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+                gap: 18px;
+            }
+            .links { justify-content: center; }
+            .profile-photo { width: 140px; height: 140px; }
+            .pub { flex-direction: column; }
+            .pub-thumb { width: 100%; height: 140px; }
+            .exp-item { flex-direction: column; gap: 2px; }
+            .exp-item .date { width: auto; }
+            .news .date { width: 70px; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Homepage</h1>
+<div class="container">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-text">
+            <h1>hzy (胡衷瑗)</h1>
+            <p class="subtitle">First-year Ph.D. student, Tsinghua University</p>
+            <p style="margin:0;color:var(--muted);font-size:14.5px;">
+                Advised by Prof. <a href="https://thusigsiclab.github.io/thu.github.io/xiuli.html" target="_blank">Xiu Li</a> ·
+                Shenzhen International Graduate School
+            </p>
+            <div class="links">
+                <a href="mailto:huzhongyyuan@gmail.com"><i class="fas fa-envelope"></i> huzhongyyuan@gmail.com</a>
+                <a href="https://scholar.google.com/citations?user=HBE737kAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                <a href="https://github.com/huzhongyyuan" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        <img src="hzy.jpg" alt="hzy" class="profile-photo">
     </header>
-    <nav>
-        <!-- Navigation links -->
-    </nav>
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <p>Hello, I'm Zhongyuan Hu. And I will be entering Tsinghua University in the fall of 2025 ,supervised by Prof. Xiu Li .</p>
-            <h3>My Research Interests</h3>
-            <ul>
-                <li>Diffusion Models</li>
-                <li>Digital Humans</li>
-                <li>3D Reconstruction</li>
-            </ul>
-        </section>
-        <aside>
-            <img src="hzy.jpg" alt="Profile Picture" class="profile">
-        </aside>
-    </main>
+
+    <!-- About -->
+    <section class="bio">
+        <h2>About Me</h2>
+        <p>
+            I am a first-year Ph.D. student at <strong>Tsinghua University</strong>, advised by Prof. Xiu Li.
+            My research focuses on <strong>video generation</strong>, <strong>motion generation</strong>,
+            and <strong>world models</strong>, with the long-term goal of building generative systems
+            that can simulate dynamic visual worlds and human behavior.
+        </p>
+        <p>
+            Previously, I was a research intern at <strong>Tencent</strong> (Jun. 2025 – Dec. 2025).
+            Feel free to reach out if you would like to discuss research or collaboration.
+        </p>
+    </section>
+
+    <!-- Publications -->
+    <section class="pubs">
+        <h2>Publications</h2>
+        <p style="font-size:13.5px;color:var(--muted);margin-top:-8px;">
+            <span style="text-decoration:underline;font-weight:600;">Underlined</span> denotes me. <sup>*</sup> denotes equal contribution.
+        </p>
+
+        <div class="pub">
+            <div class="pub-thumb"><img src="assets/teasers/infinitedance.jpg" alt="InfiniteDance teaser" onerror="this.parentElement.textContent='InfiniteDance'"></div>
+            <div class="pub-body">
+                <p class="pub-title">InfiniteDance: Scalable 3D Dance Generation Towards in-the-wild Generalization</p>
+                <p class="pub-authors">
+                    R. Li<sup>*</sup>, <span class="me">Z. Hu<sup>*</sup></span>, L. Siyao, Y. Zhang, H. Xie, M. Zhang, J. Guo, X. Li, Z. Liu
+                </p>
+                <p class="pub-venue"><span class="badge">Preprint</span>arXiv, 2026</p>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/abs/2603.13375" target="_blank">arXiv</a>
+                    <a href="https://infinitedance.github.io/" target="_blank">Project Page</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="pub-thumb"><img src="assets/teasers/watch.jpg" alt="WATCH teaser" onerror="this.parentElement.textContent='WATCH'"></div>
+            <div class="pub-body">
+                <p class="pub-title">WATCH: World-aware Allied Trajectory and pose reconstruction for Camera and Human</p>
+                <p class="pub-authors">
+                    Q. Ying<sup>*</sup>, <span class="me">Z. Hu<sup>*</sup></span>, R. Zhang, R. Li, Y. Lu, Z. Zeng
+                </p>
+                <p class="pub-venue"><span class="badge">Preprint</span>arXiv, 2025</p>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/abs/2509.04600" target="_blank">arXiv</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="pub-thumb"><img src="assets/teasers/survey.jpg" alt="Survey teaser" onerror="this.parentElement.textContent='Survey'"></div>
+            <div class="pub-body">
+                <p class="pub-title">Controllable Video Generation: A Survey</p>
+                <p class="pub-authors">
+                    Y. Ma<sup>*</sup>, K. Feng<sup>*</sup>, <span class="me">Z. Hu<sup>*</sup></span>, X. Wang<sup>*</sup>, Y. Wang, M. Zheng, B. Wang, Q. Wang, X. He, <em>et al.</em>
+                </p>
+                <p class="pub-venue"><span class="badge">Survey</span>arXiv, 2025</p>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/abs/2507.16869" target="_blank">arXiv</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="pub-thumb"><img src="assets/teasers/atom.jpg" alt="Atom teaser" onerror="this.parentElement.textContent='Atom'"></div>
+            <div class="pub-body">
+                <p class="pub-title">Atom: Aligning Text-to-Motion Model at Event-Level with GPT-4Vision Reward</p>
+                <p class="pub-authors">
+                    H. Han, X. Wu, H. Liao, Z. Xu, <span class="me">Z. Hu</span>, R. Li, Y. Zhang, X. Li
+                </p>
+                <p class="pub-venue"><span class="badge">CVPR 2025</span>IEEE/CVF Conference on Computer Vision and Pattern Recognition</p>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/abs/2411.18654" target="_blank">arXiv</a>
+                    <a href="https://atom-motion.github.io/" target="_blank">Project Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section>
+        <h2>Experience</h2>
+        <div class="exp-item">
+            <span class="date">2025.09 – Present</span>
+            <span><strong>Tsinghua University</strong> — Ph.D. student, advised by Prof. Xiu Li</span>
+        </div>
+        <div class="exp-item">
+            <span class="date">2025.06 – 2025.12</span>
+            <span><strong>Tencent</strong> — Research Intern</span>
+        </div>
+        <div class="exp-item">
+            <span class="date">2021.09 – 2025.06</span>
+            <span><strong>Chongqing University</strong> — B.Eng.</span>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section>
+        <h2>Research Interests</h2>
+        <ul style="margin:0;padding-left:20px;">
+            <li>Video Generation</li>
+            <li>Motion Generation</li>
+            <li>World Models</li>
+        </ul>
+    </section>
+
     <footer>
-        <p>Copyright &copy; 2024</p>
+        <p>&copy; 2026 Zhongyuan Hu · Last updated March 2026</p>
     </footer>
+
+</div>
 </body>
 </html>
