@@ -1,390 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hzy | 胡衷瑗</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Zhongyuan Hu is a Ph.D. student at Tsinghua University working on generative AI, 3D human motion generation, video generation, and multimodal learning.">
+    <meta property="og:title" content="Zhongyuan Hu - Homepage">
+    <meta property="og:description" content="Generative AI, 3D human motion generation, video generation, and multimodal learning.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="hzy.jpg">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Zhongyuan Hu - Homepage</title>
     <style>
         :root {
-            --text: #1f2328;
-            --muted: #57606a;
-            --link: #0969da;
-            --link-hover: #0550ae;
-            --border: #d8dee4;
-            --bg-soft: #f6f8fa;
-            --accent: #0969da;
+            --text: #292929;
+            --muted: #6c7176;
+            --link: #1d5f83;
+            --heading: #18394c;
+            --rule: #dcdedc;
+            --canvas: #fbfbfa;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            --serif: Georgia, "Times New Roman", serif;
         }
+
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--text);
-            line-height: 1.65;
-            margin: 0;
-            background: #fff;
-            font-size: 16px;
-        }
-        .container {
-            max-width: 880px;
-            margin: 0 auto;
-            padding: 48px 24px 80px;
-        }
-        a {
-            color: var(--link);
-            text-decoration: none;
-        }
-        a:hover {
-            color: var(--link-hover);
-            text-decoration: underline;
-        }
-        h1, h2, h3 {
-            font-weight: 600;
-            line-height: 1.3;
-        }
+        body { margin: 0; color: var(--text); background: var(--canvas); font: 15px/1.65 var(--sans); }
+        a { color: var(--link); text-underline-offset: 3px; }
+        a:hover { color: #123f5a; }
+        img { max-width: 100%; }
+        strong { font-weight: 650; }
 
-        /* Header */
-        .header {
-            display: flex;
-            gap: 36px;
-            align-items: flex-start;
-            margin-bottom: 40px;
-        }
-        .header-text {
-            flex: 1;
-            min-width: 0;
-        }
-        .header h1 {
-            font-size: 28px;
-            margin: 0 0 4px;
-        }
-        .header .subtitle {
-            color: var(--muted);
-            margin: 0 0 16px;
-            font-size: 15px;
-        }
-        .profile-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 8px;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 1px solid var(--border);
-        }
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px 18px;
-            margin-top: 16px;
-            font-size: 14px;
-        }
-        .links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--muted);
-        }
-        .links a:hover {
-            color: var(--link);
-            text-decoration: none;
-        }
-        .links i { width: 16px; text-align: center; }
+        .skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; padding: 7px 10px; color: #fff; background: #222; transform: translateY(-150%); }
+        .skip-link:focus { transform: translateY(0); }
 
-        /* Sections */
-        section { margin-top: 36px; }
-        section h2 {
-            font-size: 20px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 6px;
-            margin: 0 0 16px;
-        }
-        section p { margin: 0 0 12px; }
+        .site-nav { border-bottom: 1px solid var(--rule); background: rgba(251,251,250,.96); }
+        .nav-inner { width: min(1020px, calc(100% - 40px)); min-height: 56px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+        .nav-name { color: var(--heading); font: 600 16px/1.2 var(--serif); text-decoration: none; }
+        .nav-links { display: flex; gap: 21px; font-size: 12.5px; }
+        .nav-links a { color: #555d62; text-decoration: none; white-space: nowrap; }
+        .nav-links a:hover { color: var(--link); }
 
-        /* Bio */
-        .bio strong { color: var(--text); }
+        .layout { width: min(1020px, calc(100% - 40px)); margin: 0 auto; display: grid; grid-template-columns: 225px minmax(0,1fr); gap: 46px; padding: 46px 0 70px; }
+        .sidebar { position: sticky; top: 28px; align-self: start; padding-right: 34px; border-right: 1px solid var(--rule); }
+        .portrait { display: block; width: 170px; height: 170px; border-radius: 50%; object-fit: cover; object-position: center 18%; border: 1px solid #d1d4d3; }
+        .sidebar h1 { margin: 23px 0 3px; color: var(--heading); font: 600 24px/1.18 var(--serif); letter-spacing: -.01em; white-space: nowrap; }
+        .name-cn { display: block; margin-top: 5px; color: #777; font: 500 13px/1.3 var(--sans); letter-spacing: .08em; }
+        .affiliation { margin: 14px 0 0; font-size: 13.5px; }
+        .focus { margin: 13px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.6; }
+        .sidebar-links { margin: 18px 0 0; padding: 0; list-style: none; font-size: 12.5px; }
+        .sidebar-links li { margin-bottom: 5px; }
+        .sidebar-links a { text-decoration: none; }
+        .sidebar-links a::before { content: "↗ "; color: #8a8f92; }
 
-        /* News */
-        .news ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-        .news li {
-            display: flex;
-            gap: 14px;
-            padding: 6px 0;
-            font-size: 14.5px;
-        }
-        .news .date {
-            color: var(--muted);
-            font-variant-numeric: tabular-nums;
-            flex-shrink: 0;
-            width: 80px;
-        }
+        .content { min-width: 0; }
+        .content section { scroll-margin-top: 18px; margin-bottom: 46px; }
+        .content section:last-of-type { margin-bottom: 0; }
+        .content h2 { margin: 0 0 15px; padding-bottom: 7px; border-bottom: 1px solid var(--rule); color: var(--heading); font: 500 25px/1.25 var(--serif); }
+        .content p { margin: 0 0 11px; }
+        .about-lead { color: #3c4347; font: 18px/1.55 var(--serif); }
+        .availability { color: var(--muted); font-size: 13.5px; }
 
-        /* Publications */
-        .pub {
-            display: flex;
-            gap: 18px;
-            margin-bottom: 22px;
-            padding-bottom: 18px;
-            border-bottom: 1px dashed var(--border);
-        }
-        .pub:last-child { border-bottom: none; }
-        .pub-thumb {
-            width: 180px;
-            height: 110px;
-            flex-shrink: 0;
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted);
-            font-size: 12px;
-            text-align: center;
-        }
-        .pub-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .pub-body { flex: 1; min-width: 0; }
-        .pub-title {
-            font-weight: 600;
-            font-size: 15.5px;
-            margin: 0 0 4px;
-            color: var(--text);
-        }
-        .pub-authors {
-            font-size: 14px;
-            color: var(--text);
-            margin: 0 0 4px;
-        }
-        .pub-authors .me {
-            font-weight: 600;
-            text-decoration: underline;
-        }
-        .pub-venue {
-            font-size: 14px;
-            color: var(--muted);
-            font-style: italic;
-            margin: 0 0 6px;
-        }
-        .pub-venue .badge {
-            display: inline-block;
-            font-style: normal;
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            color: var(--muted);
-            padding: 1px 8px;
-            border-radius: 10px;
-            font-size: 12px;
-            margin-right: 6px;
-        }
-        .pub-links {
-            font-size: 13px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 4px;
-        }
-        .pub-links a {
-            border: 1px solid var(--border);
-            padding: 2px 10px;
-            border-radius: 4px;
-            color: var(--muted);
-        }
-        .pub-links a:hover {
-            border-color: var(--link);
-            color: var(--link);
-            text-decoration: none;
-        }
+        .news-list { margin: 0; padding: 0; list-style: none; }
+        .news-list li { display: grid; grid-template-columns: 68px minmax(0,1fr); gap: 12px; margin-bottom: 7px; }
+        .news-list time { color: #7a7f83; font-size: 12.5px; font-style: italic; }
 
-        /* Experience */
-        .exp-item {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 12px;
-            font-size: 14.5px;
-        }
-        .exp-item .date {
-            color: var(--muted);
-            flex-shrink: 0;
-            width: 150px;
-            font-variant-numeric: tabular-nums;
-        }
+        .research-copy { max-width: 700px; }
+        .research-copy p { margin-bottom: 10px; }
 
-        /* Footer */
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 13px;
-            text-align: center;
-        }
+        .publications-note { margin: -7px 0 7px !important; color: #777; font-size: 12px; }
+        .paper { display: grid; grid-template-columns: 175px minmax(0,1fr); gap: 20px; padding: 19px 0; border-bottom: 1px solid #e2e3e2; }
+        .paper:first-of-type { padding-top: 11px; }
+        .paper-image { width: 175px; height: 119px; overflow: hidden; border: 1px solid #d6d8d7; background: #f5f6f5; }
+        .paper-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
+        .paper-image img.camera-teaser { object-fit: contain; object-position: center; }
+        .paper h3 { margin: 0 0 5px; color: #24292d; font: 600 17px/1.35 var(--serif); }
+        .authors { margin: 0 0 4px !important; font-size: 12.5px; line-height: 1.48; }
+        .authors .me { font-weight: 700; text-decoration: underline; text-decoration-color: #777; text-underline-offset: 2px; }
+        .venue { margin: 0 0 4px !important; font-size: 12.5px; font-style: italic; }
+        .contribution { margin: 0 0 6px !important; color: #666; font-size: 12px; }
+        .paper-links { margin: 0 !important; font-size: 12px; }
+        .paper-links a { margin-right: 9px; text-decoration: none; }
+        .paper-links a::before { content: "["; color: #777; }
+        .paper-links a::after { content: "]"; color: #777; }
+        .paper-links span { color: #888; }
 
-        /* Responsive */
-        @media (max-width: 640px) {
-            .container { padding: 28px 18px 60px; }
-            .header {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
-                gap: 18px;
-            }
-            .links { justify-content: center; }
-            .profile-photo { width: 140px; height: 140px; }
-            .pub { flex-direction: column; }
-            .pub-thumb { width: 100%; height: 140px; }
-            .exp-item { flex-direction: column; gap: 2px; }
-            .exp-item .date { width: auto; }
-            .news .date { width: 70px; }
+        .record { display: grid; grid-template-columns: 135px minmax(0,1fr); gap: 20px; padding: 10px 0; }
+        .record-date { color: #777; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+        .record h3 { margin: 0; font-size: 13.5px; font-weight: 650; }
+        .record p { margin: 2px 0 0; color: #666; font-size: 12.5px; }
+        .record a { color: inherit; text-decoration: none; }
+        .record a:hover { color: var(--link); }
+
+        footer { margin-top: 52px; padding-top: 17px; border-top: 1px solid var(--rule); color: #7a7f83; font-size: 11.5px; text-align: left; }
+
+        @media (max-width: 760px) {
+            .nav-inner, .layout { width: min(100% - 30px,1020px); }
+            .nav-inner { min-height: 66px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 1px; padding: 8px 0; }
+            .nav-links { width: 100%; gap: 16px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; }
+            .nav-links::-webkit-scrollbar { display: none; }
+            .layout { grid-template-columns: 1fr; gap: 34px; padding-top: 30px; }
+            .sidebar { position: static; padding: 0 0 30px; border-right: 0; border-bottom: 1px solid var(--rule); }
+            .portrait { width: 145px; height: 145px; }
+            .sidebar h1 { margin-top: 19px; }
+            .sidebar-links { display: flex; flex-wrap: wrap; gap: 7px 14px; }
+            .sidebar-links li { margin: 0; }
+            .content section { margin-bottom: 39px; }
+            .paper { grid-template-columns: 1fr; gap: 12px; }
+            .paper-image { width: 100%; height: 205px; }
+            .record { grid-template-columns: 1fr; gap: 2px; }
         }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        @media print { .site-nav { display: none; } .layout { width: 100%; padding: 0; } .sidebar { position: static; } .paper { break-inside: avoid; } }
     </style>
 </head>
 <body>
-<div class="container">
+<a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="header-text">
-            <h1>hzy (胡衷瑗)</h1>
-            <p class="subtitle">First-year Ph.D. student, Tsinghua University</p>
-            <p style="margin:0;color:var(--muted);font-size:14.5px;">
-                Advised by Prof. <a href="https://thusigsiclab.github.io/thu.github.io/xiuli.html" target="_blank">Xiu Li</a> ·
-                Shenzhen International Graduate School
-            </p>
-            <div class="links">
-                <a href="mailto:huzhongyyuan@gmail.com"><i class="fas fa-envelope"></i> huzhongyyuan@gmail.com</a>
-                <a href="https://scholar.google.com/citations?user=HBE737kAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-                <a href="https://github.com/huzhongyyuan" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            </div>
+<nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+        <a class="nav-name" href="#about">Zhongyuan Hu</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#education">Education</a>
+            <a href="#experience">Experience</a>
         </div>
-        <img src="hzy.jpg" alt="hzy" class="profile-photo">
-    </header>
+    </div>
+</nav>
 
-    <!-- About -->
-    <section class="bio">
-        <h2>About Me</h2>
-        <p>
-            I am a first-year Ph.D. student at <strong>Tsinghua University</strong>, advised by Prof. Xiu Li.
-            My research focuses on <strong>video generation</strong>, <strong>motion generation</strong>,
-            and <strong>world models</strong>, with the long-term goal of building generative systems
-            that can simulate dynamic visual worlds and human behavior.
-        </p>
-        <p>
-            Previously, I was a research intern at <strong>Tencent</strong> (Jun. 2025 – Dec. 2025).
-            Feel free to reach out if you would like to discuss research or collaboration.
-        </p>
-    </section>
-
-    <!-- Publications -->
-    <section class="pubs">
-        <h2>Publications</h2>
-        <p style="font-size:13.5px;color:var(--muted);margin-top:-8px;">
-            <span style="text-decoration:underline;font-weight:600;">Underlined</span> denotes me. <sup>*</sup> denotes equal contribution.
-        </p>
-
-        <div class="pub">
-            <div class="pub-thumb"><img src="assets/teasers/infinitedance.jpg" alt="InfiniteDance teaser" onerror="this.parentElement.textContent='InfiniteDance'"></div>
-            <div class="pub-body">
-                <p class="pub-title">InfiniteDance: Scalable 3D Dance Generation Towards in-the-wild Generalization</p>
-                <p class="pub-authors">
-                    R. Li<sup>*</sup>, <span class="me">Z. Hu<sup>*</sup></span>, L. Siyao, Y. Zhang, H. Xie, M. Zhang, J. Guo, X. Li, Z. Liu
-                </p>
-                <p class="pub-venue"><span class="badge">Preprint</span>arXiv, 2026</p>
-                <div class="pub-links">
-                    <a href="https://arxiv.org/abs/2603.13375" target="_blank">arXiv</a>
-                    <a href="https://infinitedance.github.io/" target="_blank">Project Page</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="pub">
-            <div class="pub-thumb"><img src="assets/teasers/watch.jpg" alt="WATCH teaser" onerror="this.parentElement.textContent='WATCH'"></div>
-            <div class="pub-body">
-                <p class="pub-title">WATCH: World-aware Allied Trajectory and pose reconstruction for Camera and Human</p>
-                <p class="pub-authors">
-                    Q. Ying<sup>*</sup>, <span class="me">Z. Hu<sup>*</sup></span>, R. Zhang, R. Li, Y. Lu, Z. Zeng
-                </p>
-                <p class="pub-venue"><span class="badge">Preprint</span>arXiv, 2025</p>
-                <div class="pub-links">
-                    <a href="https://arxiv.org/abs/2509.04600" target="_blank">arXiv</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="pub">
-            <div class="pub-thumb"><img src="assets/teasers/survey.jpg" alt="Survey teaser" onerror="this.parentElement.textContent='Survey'"></div>
-            <div class="pub-body">
-                <p class="pub-title">Controllable Video Generation: A Survey</p>
-                <p class="pub-authors">
-                    Y. Ma<sup>*</sup>, K. Feng<sup>*</sup>, <span class="me">Z. Hu<sup>*</sup></span>, X. Wang<sup>*</sup>, Y. Wang, M. Zheng, B. Wang, Q. Wang, X. He, <em>et al.</em>
-                </p>
-                <p class="pub-venue"><span class="badge">Survey</span>arXiv, 2025</p>
-                <div class="pub-links">
-                    <a href="https://arxiv.org/abs/2507.16869" target="_blank">arXiv</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="pub">
-            <div class="pub-thumb"><img src="assets/teasers/atom.jpg" alt="Atom teaser" onerror="this.parentElement.textContent='Atom'"></div>
-            <div class="pub-body">
-                <p class="pub-title">Atom: Aligning Text-to-Motion Model at Event-Level with GPT-4Vision Reward</p>
-                <p class="pub-authors">
-                    H. Han, X. Wu, H. Liao, Z. Xu, <span class="me">Z. Hu</span>, R. Li, Y. Zhang, X. Li
-                </p>
-                <p class="pub-venue"><span class="badge">CVPR 2025</span>IEEE/CVF Conference on Computer Vision and Pattern Recognition</p>
-                <div class="pub-links">
-                    <a href="https://arxiv.org/abs/2411.18654" target="_blank">arXiv</a>
-                    <a href="https://atom-motion.github.io/" target="_blank">Project Page</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section>
-        <h2>Experience</h2>
-        <div class="exp-item">
-            <span class="date">2025.09 – Present</span>
-            <span><strong>Tsinghua University</strong> — Ph.D. student, advised by Prof. Xiu Li</span>
-        </div>
-        <div class="exp-item">
-            <span class="date">2025.06 – 2025.12</span>
-            <span><strong>Tencent</strong> — Research Intern</span>
-        </div>
-        <div class="exp-item">
-            <span class="date">2021.09 – 2025.06</span>
-            <span><strong>Chongqing University</strong> — B.Eng.</span>
-        </div>
-    </section>
-
-    <!-- Research Interests -->
-    <section>
-        <h2>Research Interests</h2>
-        <ul style="margin:0;padding-left:20px;">
-            <li>Video Generation</li>
-            <li>Motion Generation</li>
-            <li>World Models</li>
+<main id="main" class="layout">
+    <aside class="sidebar">
+        <img class="portrait" src="hzy.jpg" alt="Portrait of Zhongyuan Hu">
+        <h1>Zhongyuan Hu <span class="name-cn">胡衷瑗</span></h1>
+        <p class="affiliation">Ph.D. Student<br>Tsinghua University</p>
+        <p class="focus">Generative AI<br>3D Human Motion Generation<br>Video Generation<br>Multimodal Learning</p>
+        <ul class="sidebar-links">
+            <li><a href="mailto:huzhongyyuan@gmail.com">Email</a></li>
+            <li><a href="https://scholar.google.com/citations?user=HBE737kAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+            <li><a href="https://github.com/huzhongyyuan" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="Zhongyuan-Hu-CV.pdf">Curriculum Vitae</a></li>
         </ul>
-    </section>
+    </aside>
 
-    <footer>
-        <p>&copy; 2026 Zhongyuan Hu · Last updated March 2026</p>
-    </footer>
+    <div class="content">
+        <section id="about" aria-labelledby="about-title">
+            <h2 id="about-title">About</h2>
+            <p class="about-lead">I work on generative models for human motion, camera behavior, and dynamic visual content.</p>
+            <p>I am a first-year Ph.D. student in Control Science and Engineering at <strong>Tsinghua University</strong>, supervised by Prof. <a href="https://thusigsiclab.github.io/thu.github.io/xiuli.html" target="_blank" rel="noopener noreferrer">Xiu Li</a>. Before Tsinghua, I received my B.Eng. from Chongqing University, where I ranked first in my class (1/323).</p>
+            <p>My research focuses on controllable models that connect language, music, human motion, 3D states, camera trajectories, and video.</p>
+            <p>Previously, I was a Research Intern at <a href="https://game.qq.com/" target="_blank" rel="noopener noreferrer">Tencent Games</a>, Shenzhen, working on joint human-camera reconstruction.</p>
+            <p class="availability">I am open to research discussions, collaborations, and research internship opportunities.</p>
+        </section>
 
-</div>
+        <section id="news" aria-labelledby="news-title">
+            <h2 id="news-title">News</h2>
+            <ul class="news-list">
+                <li><time>2026</time><span><strong>CameraOperator</strong> was accepted at ACM MM 2026.</span></li>
+                <li><time>2026</time><span><strong>InfiniteDance</strong> was accepted at ECCV 2026.</span></li>
+                <li><time>2026</time><span><strong>WATCH</strong> was accepted.</span></li>
+                <li><time>2025</time><span><strong>AToM</strong> was published at CVPR 2025.</span></li>
+            </ul>
+        </section>
+
+        <section id="research" aria-labelledby="research-title">
+            <h2 id="research-title">Research</h2>
+            <div class="research-copy">
+                <p>I study data and model design for dynamic visual worlds, with an emphasis on physically plausible human motion, camera-subject interaction, and controllable generation beyond curated settings.</p>
+                <p>My recent work spans large-scale 3D dance generation, joint human-camera reconstruction, camera trajectory generation, and controllable video generation.</p>
+            </div>
+        </section>
+
+        <section id="publications" aria-labelledby="publications-title">
+            <h2 id="publications-title">Selected Publications</h2>
+            <p class="publications-note">* denotes co-first authors. My name is underlined.</p>
+
+            <article class="paper">
+                <div class="paper-image"><img src="assets/teasers/infinitedance.jpg" alt="InfiniteDance paper preview"></div>
+                <div>
+                    <h3>InfiniteDance: Scalable 3D Dance Generation Towards in-the-wild Generalization</h3>
+                    <p class="authors">Ronghui Li*, <span class="me">Zhongyuan Hu*</span>, Li Siyao, Youliang Zhang, Haozhe Xie, Mingyuan Zhang, Jie Guo, Xiu Li, Ziwei Liu</p>
+                    <p class="venue">ECCV 2026, accepted</p>
+                    <p class="contribution">Co-first author and core contributor; 100+ hours of multimodal 3D dance data.</p>
+                    <p class="paper-links"><a href="https://arxiv.org/abs/2603.13375" target="_blank" rel="noopener noreferrer">paper</a><a href="https://infinitedance.github.io/" target="_blank" rel="noopener noreferrer">project page</a></p>
+                </div>
+            </article>
+
+            <article class="paper">
+                <div class="paper-image"><img class="camera-teaser" src="assets/teasers/cameraoperator.png" alt="CameraOperator method overview from the paper"></div>
+                <div>
+                    <h3>CameraOperator: Subject-Aware Camera Trajectory Generation</h3>
+                    <p class="authors"><span class="me">Zhongyuan Hu</span>, et al.</p>
+                    <p class="venue">ACM MM 2026, accepted</p>
+                    <p class="contribution">First author and core contributor; BlockCam benchmark with 41K sequences.</p>
+                    <p class="paper-links"><span>Public link coming soon.</span></p>
+                </div>
+            </article>
+
+            <article class="paper">
+                <div class="paper-image"><img src="assets/teasers/watch.jpg" alt="WATCH paper preview"></div>
+                <div>
+                    <h3>WATCH: World-aware Allied Trajectory and pose reconstruction for Camera and Human</h3>
+                    <p class="authors">Qijun Ying*, <span class="me">Zhongyuan Hu*</span>, Rui Zhang, Ronghui Li, Yu Lu, Zijiao Zeng</p>
+                    <p class="venue">Accepted</p>
+                    <p class="contribution">Co-first author and core contributor; joint human-camera reconstruction in the wild.</p>
+                    <p class="paper-links"><a href="https://arxiv.org/abs/2509.04600" target="_blank" rel="noopener noreferrer">paper</a></p>
+                </div>
+            </article>
+
+            <article class="paper">
+                <div class="paper-image"><img src="assets/teasers/survey.jpg" alt="Controllable video generation survey preview"></div>
+                <div>
+                    <h3>Controllable Video Generation: A Survey</h3>
+                    <p class="authors">Yue Ma*, Kunyu Feng*, <span class="me">Zhongyuan Hu*</span>, Xinyu Wang*, et al.</p>
+                    <p class="venue">ACM Computing Surveys, under review</p>
+                    <p class="contribution">Co-first author and core contributor; a taxonomy of controllable video generation.</p>
+                    <p class="paper-links"><a href="https://arxiv.org/abs/2507.16869" target="_blank" rel="noopener noreferrer">paper</a></p>
+                </div>
+            </article>
+
+            <article class="paper">
+                <div class="paper-image"><img src="assets/teasers/atom.jpg" alt="AToM paper preview"></div>
+                <div>
+                    <h3>AToM: Aligning Text-to-Motion Model at Event-Level with GPT-4Vision Reward</h3>
+                    <p class="authors">Haonan Han*, Xiangzuo Wu*, Huan Liao*, Zunnan Xu, <span class="me">Zhongyuan Hu</span>, Ronghui Li, Yachao Zhang, Xiu Li</p>
+                    <p class="venue">CVPR 2025</p>
+                    <p class="contribution">Event-level alignment for text-to-motion generation with GPT-4Vision reward.</p>
+                    <p class="paper-links"><a href="https://arxiv.org/abs/2411.18654" target="_blank" rel="noopener noreferrer">paper</a><a href="https://atom-motion.github.io/" target="_blank" rel="noopener noreferrer">project page</a></p>
+                </div>
+            </article>
+        </section>
+
+        <section id="education" aria-labelledby="education-title">
+            <h2 id="education-title">Education</h2>
+            <article class="record"><div class="record-date">2025.09 - Present</div><div><h3>Tsinghua University</h3><p>Ph.D. in Control Science and Engineering, supervised by Prof. Xiu Li.</p></div></article>
+            <article class="record"><div class="record-date">2021.09 - 2025.06</div><div><h3>Chongqing University</h3><p>B.Eng. in Computer Science and Technology. GPA 3.91/4.00; ranked 1/323.</p></div></article>
+        </section>
+
+        <section id="experience" aria-labelledby="experience-title">
+            <h2 id="experience-title">Experience</h2>
+            <article class="record"><div class="record-date">2025.06 - 2025.12</div><div><h3><a href="https://game.qq.com/" target="_blank" rel="noopener noreferrer">Tencent Games</a></h3><p>Research Intern, Shenzhen. Human motion capture, pose estimation, and camera estimation.</p></div></article>
+        </section>
+
+        <footer>© 2026 Zhongyuan Hu · Last updated August 2026</footer>
+    </div>
+</main>
 </body>
 </html>
