@@ -1,24 +1,27 @@
-# Zhongyuan Hu - Academic Homepage
+# Zhongyuan Hu — Academic Homepage
 
-A lightweight, responsive academic homepage for GitHub Pages.
+A responsive, static academic homepage for GitHub Pages. No build step, external fonts, tracking, or JavaScript dependencies.
 
 ## Local preview
-
-Run the following command in this directory:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open `http://127.0.0.1:8000/`.
+Open `http://127.0.0.1:8000/`.
 
 ## Main files
 
-- `index.html`: page content, layout, and responsive styles
-- `hzy.jpg`: profile portrait used by the page
-- `Zhongyuan-Hu-CV.pdf`: downloadable English CV
-- `assets/teasers/`: publication images, including the CameraOperator SVG card
+- `index.html`: biography, research interests, news, publications, and background
+- `styles.css`: responsive layout, keyboard focus styles, and print styles
+- `assets/portrait.webp`: optimized profile portrait
+- `assets/teasers/*.webp`: optimized publication previews
+- `hzy.jpg` and original JPG/PNG teasers: retained source images
+
+## Content updates
+
+Keep publication author lists, equal-contribution markers, venues, and resource links accurate. The homepage intentionally does not host a downloadable résumé. Update the footer date after content changes.
 
 ## Deployment
 
-The site is self-contained and can be deployed directly from the repository root with GitHub Pages. Review the publication metadata and links, commit the changes, and push to `main` when ready.
+GitHub Pages serves the root of `main`. Preview changes at desktop and mobile widths, check links and images, then commit and push to `main`.
