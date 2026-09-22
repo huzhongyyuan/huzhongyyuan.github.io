@@ -30,6 +30,8 @@ GitHub Pages serves the root of `main`. Preview changes at desktop and mobile wi
 
 ## Design reference
 
-The design is inspired by https://yisuanwang.github.io/: a rounded profile and biography panel, system typography, blue links, a light-gray publication section, white paper cards, topic chips, and education/experience below. The implementation is original and uses Zhongyuan Hu’s own biography and publication metadata. Topic filters are sized for this five-paper collection.
+The design is inspired by https://yisuanwang.github.io/: a rounded profile and biography panel, system typography, blue links, a light-gray publication section, white paper cards, topic chips, and education/experience below. The implementation is original and uses Zhongyuan Hu’s own biography and publication metadata. Topic filters are sized for this publication collection.
 
 Logo sources: Tsinghua University mark from the reference homepage; Chongqing University mark from https://www.cqu.edu.cn/images/logo1.png; Tencent Games mark from https://game.gtimg.cn/images/game/web201910/images/logo.png.
+
+SignGPT overview image: https://signgpt-demo.github.io/sign-language-interaction-demo/signgpt-overview.png (optimized WebP); publication metadata and equal-contribution markers verified against arXiv:2609.21709v1.
